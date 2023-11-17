@@ -15,3 +15,25 @@ resource "terraform_data" "acr_build_weatherforecast" {
     working_dir = abspath("${path.module}/../weatherforecast")
   }
 }
+
+resource "terraform_data" "acr_build_howtoaks_api" {
+  triggers_replace = tomap({
+    "registry" = azurerm_container_registry.this.name
+  })
+
+  provisioner "local-exec" {
+    command     = "az acr build --registry ${self.triggers_replace["registry"]} --image howtoaks/api:latest --platform linux ."
+    working_dir = abspath("${path.module}/../howtoaks/HowToAKS.WebApi")
+  }
+}
+
+resource "terraform_data" "acr_build_howtoaks_frontend" {
+  triggers_replace = tomap({
+    "registry" = azurerm_container_registry.this.name
+  })
+
+  provisioner "local-exec" {
+    command     = "az acr build --registry ${self.triggers_replace["registry"]} --image howtoaks/frontend:latest --platform linux ."
+    working_dir = abspath("${path.module}/../howtoaks/HowToAKS.Web")
+  }
+}
