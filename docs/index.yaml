@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  howtoaks:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-11-17T11:43:49.494996289+01:00"
+    description: Deploy the HowToAks application
+    digest: 9986b1faf12c8d28c732437a367e8b3cf885ab0ef89aaba36eaab0640e9d7f2c
+    name: howtoaks
+    type: application
+    urls:
+    - https://arnaud-tincelin.github.io/aks-demo2/howtoaks-1.0.9.tgz
+    version: 1.0.9
+generated: "2023-11-17T11:43:49.476885892+01:00"
